@@ -43,6 +43,7 @@ services:
         volumes:
             - "./:/var/www/netcat:rw"
             - "./docker/nginx/netcat.conf:/etc/nginx/conf.d/default.conf"
+            - "./logs/nginx:/var/log/nginx"
         ports:
             - 80:80
         networks:

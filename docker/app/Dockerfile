@@ -1,12 +1,12 @@
-FROM php:7.2.23-fpm-stretch
+FROM php:7.0-fpm-stretch
 
 # system packages
-RUN apt-get update && apt-get install -y libgmp-dev curl libicu-dev libpng-dev libjpeg-dev zlib1g-dev wget git unzip \
+RUN apt-get update && apt-get install -y mc libgmp-dev libxml2-dev curl libicu-dev libpng-dev libjpeg-dev zlib1g-dev wget git unzip \
     && pecl install xdebug-2.7.1 \
     && docker-php-ext-enable xdebug
 
 # php extensions
-RUN docker-php-ext-install -j$(nproc) pdo_mysql zip mbstring opcache exif calendar gettext \
+RUN docker-php-ext-install -j$(nproc) pdo_mysql zip mbstring opcache exif calendar gettext simplexml \
     gmp mysqli intl gd
 
 
